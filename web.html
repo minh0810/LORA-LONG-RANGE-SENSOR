@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
+        <!-- 
+            width=device-width: đặt giá trị của width là chiều rộng của màn hình là tỉ lệ 100%
+            initial-scale=1: kiểm soát mức thu phóng cho trang web ban đầu, tức là ko thu phóng
+            viewport: để ch web tương thích với nhiều loại thiết bị khác nhau
+        -->
+        <link rel=\"icon\" href=\"data:,\">  <!-- liên kết với file data -->
+        <style>
+            body { 
+                text-align: center;  /*đưa nội dung vào trung tâm Element*/
+                font-family: \"Trebuchet MS\", Arial;  /*phông chữ-1 chính và 1 dự phòng*/
+            }
+            table { 
+                border-collapse: collapse;  /*chuyển các đường viền thành 1 đường duy nhất */
+                width:50%; 
+                margin-left:auto; 
+                margin-right:auto; 
+            }
+            th { 
+                padding: 12px; 
+                background-color: #0043af; 
+                color: white; 
+            }
+            tr { 
+                border: 1px solid #ddd;  /*solid là đường liền nét*/
+                padding: 12px; /*lớp ôm lấy lớp Element*/
+            }
+            tr:hover {   /*tạo lớp giả cho màu background của tr*/
+                background-color: #bcbcbc; 
+            }
+            td { 
+                border: none; 
+                padding: 12px; 
+            }
+            .sensor { 
+                color:white; 
+                font-weight: bold;   /*bold: in đậm giá trị nhận được từ sensor*/
+                background-color: #bcbcbc; 
+                padding: 1px; 
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Soil Monitoring with LoRa </h1>
+        <h3>Last update: " + timeStamp + "</h3>
+        <table>
+            <tr>
+                <th>MEASUREMENT</th>
+                <th>VALUE</th>
+            </tr>
+            <tr>
+                <td>Temperature</td>
+                <td>
+                    <span class="senso">*C</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Soil moisture (0-4095)</td>
+                <td>
+                    <span class="sensor"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Battery level</td>
+                <td>
+                    <span class="sensor">%</span>
+                </td>
+            </tr>
+            <p>LoRa RSSI: " + String(rssi) + "</p>
+        </table>
+    </body>
+</html>

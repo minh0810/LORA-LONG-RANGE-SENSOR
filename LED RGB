@@ -1,0 +1,70 @@
+//#define BLYNK_TEMPLATE_ID "TMPLDVT-YCix"
+//#define BLYNK_DEVICE_NAME "LED RGB"
+//#define BLYNK_AUTH_TOKEN "p1ArJc7GUSPBIZWep4XvRUSAEY-SGMpv"
+
+
+// Comment this out to disable prints and save space
+#define BLYNK_PRINT Serial
+#include <WiFi.h>
+#include <WiFiClient.h>
+#include <BlynkSimpleEsp32.h>
+//#include <Adafruit_NeoPixel.h>
+//#include <SPI.h>
+
+//#define PIN (25, 26, 27)
+//#define NUMPIXELS 1
+//#define BLYNK_PRINT Serial
+//
+//Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+
+
+char auth[] = "DvvTsySUYM1p0mbUI57TolZ-MzoXKTVc";
+
+// Your WiFi credentials.
+// Set password to "" for open networks.
+char ssid[] = "HUYDUNG";
+char pass[] = "Dung@manh";
+
+BLYNK_WRITE(V0)
+{
+  int pinValue=param.asInt();
+  Serial.println(pinValue);
+  digitalWrite(25,pinValue);
+}
+
+BLYNK_WRITE(V1)
+{
+  int pinValue=param.asInt();
+  Serial.println(pinValue);
+  digitalWrite(4,pinValue);
+  
+}
+BLYNK_WRITE(V2)
+{
+  int pinValue=param.asInt();
+  Serial.println(pinValue);
+  digitalWrite(5,pinValue);
+  
+}
+
+void setup()
+{
+  // Debug console
+  Serial.begin(9600);
+  
+  Blynk.begin(auth, ssid, pass, "blynk-server.com", 8080);
+//
+//  Blynk.begin(auth, ssid, pass);
+  pinMode(25, OUTPUT);
+  pinMode(4, OUTPUT);
+  pinMode(5, OUTPUT);
+
+//  pixels.begin();
+    
+}
+
+
+void loop()
+{
+  Blynk.run();
+}
